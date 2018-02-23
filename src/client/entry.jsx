@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {render} from "react-dom";
+import React, { Component } from "react";
+import { render } from "react-dom";
 
+import Day from "./components/day/table.jsx";
 
-
-render(</*何か*/>、document.getElementById("root"));
+render(<Day />, document.getElementById("root"));
