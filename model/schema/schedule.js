@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const scheduleSchema = new mongoose.Schema({
-    plan: String,
-    date: Date,
+    detail: String,
+    time: Number,
     hour: Number,
+    day: Date,
     completed: Boolean
 });
 

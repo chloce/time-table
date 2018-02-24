@@ -4,15 +4,16 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-    res.render("index", { title: "Express" });
+    Schedule.
 });
 
 router.post("/schedule", (req, res, next) => {
     try {
         let schedule = new Schedule();
-        schedule.plan = req.body.plan;
-        schedule.date = req.body.date;
+        schedule.detail = req.body.detail;
+        schedule.time = req.body.time;
         schedule.hour = req.body.hour;
+        schedule.day
         schedule.completed = req.body.completed;
         schedule.save(e => {
             next(e);

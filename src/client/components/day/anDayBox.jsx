@@ -6,15 +6,15 @@ class Popup extends Component {
     constructor() {
         super();
         this.state = {
-            plan: ""
+            detail: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
     handleSubmit(event) {
         Axios.post("/schedule", {
-            plan: this.state.plan,
-            date: new Date(),
+            detail: this.state.plan,
+            time: this.props.hour,
             hour: 1,
             completed: false
         })
