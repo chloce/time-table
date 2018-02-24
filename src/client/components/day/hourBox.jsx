@@ -1,21 +1,33 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import * as Axios from "axios";
 
 class Popup extends Component {
     constructor() {
         super();
         this.state = {
-            value: ""
+            plan: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
     handleSubmit(event) {
-        alert(this.state.value);
-        event.preventDefault();
+        console.log(this.state);
+        Axios.post("/schedule", {
+            plan: this.state.plan,
+            date: new Date(),
+            hour: 1,
+            completed: false
+        })
+            .then(function(res) {
+                console.log(res);
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
     }
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ plan: event.target.value });
     }
 
     render() {
@@ -28,15 +40,15 @@ class Popup extends Component {
                             {this.props.hour} 時からの予定:
                             <input
                                 type="text"
-                                value={this.state.value}
+                                value={this.state.plan}
                                 onChange={this.handleChange}
                             />
                         </label>
-                        <label>{EndTime} 時まで</label>
+
                         <input
                             type="submit"
                             value="submit"
-                            onClick={this.props.closePopup}
+                            onClick={this.handleSubmit}
                         />
                     </form>
                 </div>
@@ -82,14 +94,9 @@ export default class HourBox extends Component {
         this.togglePopup = this.togglePopup.bind(this);
     }
     togglePopup(event) {
-        if (this.state.showPopup === false) {
-            this.setState({
-                showPopup: !this.state.showPopup,
-                targetHour: event.target.id
-            });
-        }
         this.setState({
-            showPopup: !this.state.showPopup
+            showPopup: !this.state.showPopup,
+            targetHour: event.target.id
         });
     }
     render() {

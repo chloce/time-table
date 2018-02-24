@@ -7,11 +7,14 @@
         "watch": "webpack -w"
     },
     "dependencies": {
+        "axios": "^0.18.0",
         "body-parser": "~1.18.2",
         "cookie-parser": "~1.4.3",
         "debug": "~2.6.9",
         "express": "~4.15.5",
         "less-middleware": "^2.2.1",
+        "mongodb": "^3.0.3",
+        "mongoose": "^5.0.7",
         "morgan": "~1.9.0",
         "pug": "2.0.0-beta11",
         "react": "^16.2.0",
