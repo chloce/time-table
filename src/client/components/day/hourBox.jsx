@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import * as Axios from "axios";
-
+/*
 class Popup extends Component {
     constructor() {
         super();
@@ -12,7 +12,6 @@ class Popup extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
     handleSubmit(event) {
-        console.log(this.state);
         Axios.post("/schedule", {
             plan: this.state.plan,
             date: new Date(),
@@ -56,7 +55,7 @@ class Popup extends Component {
         );
     }
 }
-
+*/
 export default class HourBox extends Component {
     constructor() {
         super();
@@ -102,16 +101,14 @@ export default class HourBox extends Component {
     render() {
         const items = [];
         const hours = this.state.hours.map(hour => (
-            <li key={hour}>
-                <div className="hourBox" onClick={this.togglePopup} id={hour}>
-                    {hour} : 時
-                </div>
+            <li key={hour} className="hourList">
+                <div className="hourBox" onClick={this.togglePopup} id={hour} />
             </li>
         ));
         //console.log(hours);
         return (
-            <div>
-                <ul>{hours}</ul>
+            <div className="dayMainContainer">
+                <ul className="dayList">{hours}</ul>
                 {this.state.showPopup ? (
                     <Popup
                         hour={this.state.targetHour}

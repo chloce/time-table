@@ -6,6 +6,23 @@ body {
 a {
     color: #00b7ff;
 }
+#dayPageMainContainer {
+    text-align: center;
+}
+
+.dayMainContainer {
+    display: inline-block;
+}
+
+.hourList {
+    list-style: none;
+    width: 302px;
+}
+.dayList {
+    width: 302px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
 
 .hourBox {
     width: 300px;

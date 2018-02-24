@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
 
 import HourBox from "./hourBox.jsx";
 
-export default class Table extends Component {
+export default class Daily extends Component {
     render() {
         return (
-            <div>
+            <div id="dayPageMainContainer">
                 <HourBox />
             </div>
         );
