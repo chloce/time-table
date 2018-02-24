@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import * as Axios from "axios";
-/*
+
 class Popup extends Component {
     constructor() {
         super();
@@ -30,32 +30,27 @@ class Popup extends Component {
     }
 
     render() {
-        const EndTime = this.props.hour + 1;
         return (
             <div className="popup">
                 <div className="popup-inner">
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                            {this.props.hour} 時からの予定:
+                            <div>{this.props.hour} 時からの予定:</div>
                             <input
                                 type="text"
-                                value={this.state.plan}
                                 onChange={this.handleChange}
+                                placeholder="予定"
                             />
                         </label>
 
-                        <input
-                            type="submit"
-                            value="submit"
-                            onClick={this.handleSubmit}
-                        />
+                        <input type="submit" value="submit" />
                     </form>
                 </div>
             </div>
         );
     }
 }
-*/
+
 export default class HourBox extends Component {
     constructor() {
         super();
@@ -102,12 +97,14 @@ export default class HourBox extends Component {
         const items = [];
         const hours = this.state.hours.map(hour => (
             <li key={hour} className="hourList">
-                <div className="hourBox" onClick={this.togglePopup} id={hour} />
+                <div className="hourBox" onClick={this.togglePopup} id={hour}>
+                    {hour}
+                </div>
             </li>
         ));
         //console.log(hours);
         return (
-            <div className="dayMainContainer">
+            <div>
                 <ul className="dayList">{hours}</ul>
                 {this.state.showPopup ? (
                     <Popup

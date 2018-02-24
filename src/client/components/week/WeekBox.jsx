@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Day from "../day/dayTable.jsx";
+import Day from "../day/anDayBox.jsx";
 
 export default class Days extends Component {
     constructor() {
@@ -22,14 +22,30 @@ export default class Days extends Component {
 
     render() {
         return (
-            <div>
-                <Day />
-                <Day />
-                <Day />
-                <Day />
-                <Day />
-                <Day />
-                <Day />
+            <div id="week-container">
+                <div className="week-day-block">
+                    今日
+                    <Day />
+                </div>
+                <div className="week-day-block">
+                    明日
+                    <Day />
+                </div>
+                <div className="week-day-block">
+                    <Day />
+                </div>
+                <div className="week-day-block">
+                    <Day />
+                </div>
+                <div className="week-day-block">
+                    <Day />
+                </div>
+                <div className="week-day-block">
+                    <Day />
+                </div>
+                <div className="week-day-block">
+                    <Day />
+                </div>
             </div>
         );
     }

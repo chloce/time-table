@@ -1685,7 +1685,7 @@ var _weekTable2 = _interopRequireDefault(_weekTable);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _reactDom.render)(_react2.default.createElement(_dayTable2.default, null), document.getElementById("root"));
+(0, _reactDom.render)(_react2.default.createElement(_weekTable2.default, null), document.getElementById("root"));
 
 /***/ }),
 /* 23 */
@@ -18951,155 +18951,7 @@ module.exports = camelize;
 
 /***/ }),
 /* 34 */,
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(8);
-
-var _axios = __webpack_require__(36);
-
-var Axios = _interopRequireWildcard(_axios);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/*
-class Popup extends Component {
-    constructor() {
-        super();
-        this.state = {
-            plan: ""
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleSubmit(event) {
-        Axios.post("/schedule", {
-            plan: this.state.plan,
-            date: new Date(),
-            hour: 1,
-            completed: false
-        })
-            .then(function(res) {
-                console.log(res);
-            })
-            .catch(function(err) {
-                console.log(err);
-            });
-    }
-    handleChange(event) {
-        this.setState({ plan: event.target.value });
-    }
-
-    render() {
-        const EndTime = this.props.hour + 1;
-        return (
-            <div className="popup">
-                <div className="popup-inner">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            {this.props.hour} 時からの予定:
-                            <input
-                                type="text"
-                                value={this.state.plan}
-                                onChange={this.handleChange}
-                            />
-                        </label>
-
-                        <input
-                            type="submit"
-                            value="submit"
-                            onClick={this.handleSubmit}
-                        />
-                    </form>
-                </div>
-            </div>
-        );
-    }
-}
-*/
-var HourBox = function (_Component) {
-    _inherits(HourBox, _Component);
-
-    function HourBox() {
-        _classCallCheck(this, HourBox);
-
-        var _this = _possibleConstructorReturn(this, (HourBox.__proto__ || Object.getPrototypeOf(HourBox)).call(this));
-
-        _this.state = {
-            hours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-            whoPopup: false,
-            value: "",
-            targetHour: 0
-        };
-        _this.togglePopup = _this.togglePopup.bind(_this);
-        return _this;
-    }
-
-    _createClass(HourBox, [{
-        key: "togglePopup",
-        value: function togglePopup(event) {
-            this.setState({
-                showPopup: !this.state.showPopup,
-                targetHour: event.target.id
-            });
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            var items = [];
-            var hours = this.state.hours.map(function (hour) {
-                return _react2.default.createElement(
-                    "li",
-                    { key: hour, className: "hourList" },
-                    _react2.default.createElement("div", { className: "hourBox", onClick: _this2.togglePopup, id: hour })
-                );
-            });
-            //console.log(hours);
-            return _react2.default.createElement(
-                "div",
-                { className: "dayMainContainer" },
-                _react2.default.createElement(
-                    "ul",
-                    { className: "dayList" },
-                    hours
-                ),
-                this.state.showPopup ? _react2.default.createElement(Popup, {
-                    hour: this.state.targetHour,
-                    closePopup: this.togglePopup
-                }) : null
-            );
-        }
-    }]);
-
-    return HourBox;
-}(_react.Component);
-
-exports.default = HourBox;
-
-/***/ }),
+/* 35 */,
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20004,9 +19856,9 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _hourBox = __webpack_require__(35);
+var _anDayBox = __webpack_require__(58);
 
-var _hourBox2 = _interopRequireDefault(_hourBox);
+var _anDayBox2 = _interopRequireDefault(_anDayBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20028,10 +19880,19 @@ var Daily = function (_Component) {
     _createClass(Daily, [{
         key: "render",
         value: function render() {
+            var day = new Date();
             return _react2.default.createElement(
                 "div",
-                { id: "dayPageMainContainer" },
-                _react2.default.createElement(_hourBox2.default, null)
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { id: "dayPageMainContainer" },
+                    _react2.default.createElement(
+                        "div",
+                        { id: "dayMainContainer" },
+                        _react2.default.createElement(_anDayBox2.default, null)
+                    )
+                )
             );
         }
     }]);
@@ -20112,9 +19973,9 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _dayTable = __webpack_require__(55);
+var _anDayBox = __webpack_require__(58);
 
-var _dayTable2 = _interopRequireDefault(_dayTable);
+var _anDayBox2 = _interopRequireDefault(_anDayBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20139,13 +20000,13 @@ var Days = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 null,
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null)
+                _react2.default.createElement(_anDayBox2.default, null),
+                _react2.default.createElement(_anDayBox2.default, null),
+                _react2.default.createElement(_anDayBox2.default, null),
+                _react2.default.createElement(_anDayBox2.default, null),
+                _react2.default.createElement(_anDayBox2.default, null),
+                _react2.default.createElement(_anDayBox2.default, null),
+                _react2.default.createElement(_anDayBox2.default, null)
             );
         }
     }, {
@@ -20153,14 +20014,44 @@ var Days = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                null,
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null),
-                _react2.default.createElement(_dayTable2.default, null)
+                { id: "week-container" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "week-day-block" },
+                    "\u4ECA\u65E5",
+                    _react2.default.createElement(_anDayBox2.default, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "week-day-block" },
+                    "\u660E\u65E5",
+                    _react2.default.createElement(_anDayBox2.default, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "week-day-block" },
+                    _react2.default.createElement(_anDayBox2.default, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "week-day-block" },
+                    _react2.default.createElement(_anDayBox2.default, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "week-day-block" },
+                    _react2.default.createElement(_anDayBox2.default, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "week-day-block" },
+                    _react2.default.createElement(_anDayBox2.default, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "week-day-block" },
+                    _react2.default.createElement(_anDayBox2.default, null)
+                )
             );
         }
     }]);
@@ -20169,6 +20060,176 @@ var Days = function (_Component) {
 }(_react.Component);
 
 exports.default = Days;
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(8);
+
+var _axios = __webpack_require__(36);
+
+var Axios = _interopRequireWildcard(_axios);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Popup = function (_Component) {
+    _inherits(Popup, _Component);
+
+    function Popup() {
+        _classCallCheck(this, Popup);
+
+        var _this = _possibleConstructorReturn(this, (Popup.__proto__ || Object.getPrototypeOf(Popup)).call(this));
+
+        _this.state = {
+            plan: ""
+        };
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
+
+    _createClass(Popup, [{
+        key: "handleSubmit",
+        value: function handleSubmit(event) {
+            Axios.post("/schedule", {
+                plan: this.state.plan,
+                date: new Date(),
+                hour: 1,
+                completed: false
+            }).then(function (res) {
+                console.log(res);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    }, {
+        key: "handleChange",
+        value: function handleChange(event) {
+            this.setState({ plan: event.target.value });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "popup" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "popup-inner" },
+                    _react2.default.createElement(
+                        "form",
+                        { onSubmit: this.handleSubmit },
+                        _react2.default.createElement(
+                            "label",
+                            null,
+                            _react2.default.createElement(
+                                "div",
+                                null,
+                                this.props.hour,
+                                " \u6642\u304B\u3089\u306E\u4E88\u5B9A:"
+                            ),
+                            _react2.default.createElement("input", {
+                                type: "text",
+                                onChange: this.handleChange,
+                                placeholder: "\u4E88\u5B9A"
+                            })
+                        ),
+                        _react2.default.createElement("input", { type: "submit", value: "submit" })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Popup;
+}(_react.Component);
+
+var HourBox = function (_Component2) {
+    _inherits(HourBox, _Component2);
+
+    function HourBox() {
+        _classCallCheck(this, HourBox);
+
+        var _this2 = _possibleConstructorReturn(this, (HourBox.__proto__ || Object.getPrototypeOf(HourBox)).call(this));
+
+        _this2.state = {
+            hours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            whoPopup: false,
+            value: "",
+            targetHour: 0
+        };
+        _this2.togglePopup = _this2.togglePopup.bind(_this2);
+        return _this2;
+    }
+
+    _createClass(HourBox, [{
+        key: "togglePopup",
+        value: function togglePopup(event) {
+            this.setState({
+                showPopup: !this.state.showPopup,
+                targetHour: event.target.id
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this3 = this;
+
+            var items = [];
+            var hours = this.state.hours.map(function (hour) {
+                return _react2.default.createElement(
+                    "li",
+                    { key: hour, className: "hourList" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "hourBox", onClick: _this3.togglePopup, id: hour },
+                        hour
+                    )
+                );
+            });
+            //console.log(hours);
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "ul",
+                    { className: "dayList" },
+                    hours
+                ),
+                this.state.showPopup ? _react2.default.createElement(Popup, {
+                    hour: this.state.targetHour,
+                    closePopup: this.togglePopup
+                }) : null
+            );
+        }
+    }]);
+
+    return HourBox;
+}(_react.Component);
+
+exports.default = HourBox;
 
 /***/ })
 /******/ ]);
