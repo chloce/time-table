@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-    Schedule.
+    res.render("index", { TITLE: "title" });
 });
 
 router.post("/schedule", (req, res, next) => {
@@ -13,7 +13,9 @@ router.post("/schedule", (req, res, next) => {
         schedule.detail = req.body.detail;
         schedule.time = req.body.time;
         schedule.hour = req.body.hour;
-        schedule.day
+        schedule.day = req.body.day;
+        schedule.month = req.body.month;
+        schedule.year = req.body.year;
         schedule.completed = req.body.completed;
         schedule.save(e => {
             next(e);

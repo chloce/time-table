@@ -1,52 +1,47 @@
 import React, { Component } from "react";
-import Day from "../day/anDayBox.jsx";
+import DayBox from "../day/dayBox.jsx";
 
 export default class Days extends Component {
     constructor() {
         super();
+        this.state = {
+            week: [0, 1, 1, 1, 1, 1, 1],
+            daysInfo: []
+        };
+        this.WeekDays = this.WeekDays.bind();
     }
-
-    Week() {
-        return (
-            <div>
-                <Day />
-                <Day />
-                <Day />
-                <Day />
-                <Day />
-                <Day />
-                <Day />
-            </div>
-        );
+    WeekDays() {
+        const today = new Date();
+        const days = this.state.week.map(day => {
+            today.setDate(today.getDate() + day);
+            const date = today.getDate();
+            const month = today.getMonth();
+            const year = today.getFullYear();
+            const dateInfo = { year: year, month: month + 1, day: date };
+            const arr = this.state.daysInfo;
+            this.setState({ daysInfo: [...arr, dateInfo] });
+        });
     }
 
     render() {
-        return (
-            <div id="week-container">
-                <div className="week-day-block">
-                    今日
-                    <Day />
+        const today = new Date();
+        let arr = [];
+        const days = this.state.week.map(day => {
+            today.setDate(today.getDate() + day);
+            const date = today.getDate();
+            const month = today.getMonth();
+            const year = today.getFullYear();
+            const dateInfo = { year: year, month: month + 1, day: date };
+            arr = [...arr, dateInfo];
+        });
+        console.log(arr);
+        const sevenDays = arr.map(day => {
+            return (
+                <div key={day.day}>
+                    <DayBox dateInfo={day} />
                 </div>
-                <div className="week-day-block">
-                    明日
-                    <Day />
-                </div>
-                <div className="week-day-block">
-                    <Day />
-                </div>
-                <div className="week-day-block">
-                    <Day />
-                </div>
-                <div className="week-day-block">
-                    <Day />
-                </div>
-                <div className="week-day-block">
-                    <Day />
-                </div>
-                <div className="week-day-block">
-                    <Day />
-                </div>
-            </div>
-        );
+            );
+        });
+        return <div id="week-container">{sevenDays}</div>;
     }
 }

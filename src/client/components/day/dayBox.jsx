@@ -12,10 +12,15 @@ class Popup extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
     handleSubmit(event) {
+        console.log(this.props.dayInfo.day);
+
         Axios.post("/schedule", {
             detail: this.state.plan,
             time: this.props.hour,
             hour: 1,
+            day: this.props.dayInfo.day,
+            month: this.props.dayInfo.month,
+            year: this.props.dayInfo.year,
             completed: false
         })
             .then(function(res) {
@@ -108,6 +113,7 @@ export default class HourBox extends Component {
                 <ul className="dayList">{hours}</ul>
                 {this.state.showPopup ? (
                     <Popup
+                        dayInfo={this.props.dateInfo}
                         hour={this.state.targetHour}
                         closePopup={this.togglePopup}
                     />

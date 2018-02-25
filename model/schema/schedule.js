@@ -4,7 +4,9 @@ const scheduleSchema = new mongoose.Schema({
     detail: String,
     time: Number,
     hour: Number,
-    day: Date,
+    day: Number,
+    month: Number,
+    year: Number,
     completed: Boolean
 });
 

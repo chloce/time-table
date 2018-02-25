@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 
-import HourBox from "./anDayBox.jsx";
+import DayBox from "./dayBox.jsx";
 
 export default class Daily extends Component {
     render() {
-        const day = new Date();
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth();
+        const year = date.getFullYear();
+        const dateInfo = {
+            year: year,
+            month: month + 1,
+            day: day
+        };
+
         return (
             <div>
                 <div id="dayPageMainContainer">
                     <div id="dayMainContainer">
-                        <HourBox />
+                        <DayBox dateInfo={dateInfo} />
                     </div>
                 </div>
             </div>
