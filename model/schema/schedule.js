@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
 const scheduleSchema = new mongoose.Schema({
-    detail: String,
-    time: Number,
-    hour: Number,
-    day: Number,
-    month: Number,
-    year: Number,
-    completed: Boolean
+    plan: String,
+    duration: Number,
+    date: String,
+    startHour: Number,
+    startMinute: Number,
+    completed: Boolean,
+    createDate: Date
 });
 
 let schedule = mongoose.model("schedule", scheduleSchema);

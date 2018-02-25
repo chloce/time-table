@@ -3,19 +3,32 @@ import Schedule from "../../../model/schema/schedule";
 var router = express.Router();
 
 /* GET home page. */
-router.get("/", function(req, res, next) {
-    res.render("index", { TITLE: "title" });
+router.get("/", (req, res, next) => {
+    res.render("index");
+});
+
+router.get("/schedules", function(req, res, next) {
+    const date = req.query.date.toString();
+
+    Schedule.find({ date }, function(err, plans) {
+        console.log(plans);
+
+        if (err) {
+            throw err;
+        }
+        res.json({ plans });
+    });
 });
 
 router.post("/schedule", (req, res, next) => {
     try {
+        console.log(req.body);
+
         let schedule = new Schedule();
-        schedule.detail = req.body.detail;
-        schedule.time = req.body.time;
-        schedule.hour = req.body.hour;
-        schedule.day = req.body.day;
-        schedule.month = req.body.month;
-        schedule.year = req.body.year;
+        schedule.plan = req.body.plan;
+        schedule.duration = req.body.duration;
+        schedule.date = req.body.date;
+        schedule.startHour = req.body.startHour;
         schedule.completed = req.body.completed;
         schedule.save(e => {
             next(e);

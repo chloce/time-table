@@ -8,19 +8,6 @@ export default class Days extends Component {
             week: [0, 1, 1, 1, 1, 1, 1],
             daysInfo: []
         };
-        this.WeekDays = this.WeekDays.bind();
-    }
-    WeekDays() {
-        const today = new Date();
-        const days = this.state.week.map(day => {
-            today.setDate(today.getDate() + day);
-            const date = today.getDate();
-            const month = today.getMonth();
-            const year = today.getFullYear();
-            const dateInfo = { year: year, month: month + 1, day: date };
-            const arr = this.state.daysInfo;
-            this.setState({ daysInfo: [...arr, dateInfo] });
-        });
     }
 
     render() {
@@ -28,16 +15,16 @@ export default class Days extends Component {
         let arr = [];
         const days = this.state.week.map(day => {
             today.setDate(today.getDate() + day);
-            const date = today.getDate();
-            const month = today.getMonth();
+            const date = ("0" + today.getDate()).slice(-2);
+            const month = ("0" + (today.getMonth() + 1)).slice(-2);
             const year = today.getFullYear();
-            const dateInfo = { year: year, month: month + 1, day: date };
+            const dateInfo = year + month + date;
             arr = [...arr, dateInfo];
         });
         console.log(arr);
         const sevenDays = arr.map(day => {
             return (
-                <div key={day.day}>
+                <div key={day}>
                     <DayBox dateInfo={day} />
                 </div>
             );

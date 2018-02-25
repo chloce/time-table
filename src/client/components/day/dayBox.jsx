@@ -12,15 +12,13 @@ class Popup extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
     handleSubmit(event) {
-        console.log(this.props.dayInfo.day);
+        console.log(this.props);
 
         Axios.post("/schedule", {
-            detail: this.state.plan,
-            time: this.props.hour,
-            hour: 1,
-            day: this.props.dayInfo.day,
-            month: this.props.dayInfo.month,
-            year: this.props.dayInfo.year,
+            plan: this.state.plan,
+            duration: 1,
+            date: this.props.dayInfo,
+            startHour: this.props.targetHour,
             completed: false
         })
             .then(function(res) {
@@ -40,7 +38,7 @@ class Popup extends Component {
                 <div className="popup-inner">
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                            <div>{this.props.hour} 時からの予定:</div>
+                            <div>{this.props.targetHour} 時からの予定:</div>
                             <input
                                 type="text"
                                 onChange={this.handleChange}
@@ -86,35 +84,83 @@ export default class HourBox extends Component {
                 22,
                 23
             ],
-            whoPopup: false,
+            showPopup: false,
             value: "",
-            targetHour: 0
+            targetHour: Number,
+            date: Number,
+            todayPlans: [],
+            targetHours: [],
+            id: 1
         };
         this.togglePopup = this.togglePopup.bind(this);
     }
     togglePopup(event) {
+        console.log(event.target.id.slice(8));
         this.setState({
             showPopup: !this.state.showPopup,
-            targetHour: event.target.id
+            targetHour: event.target.id.slice(8),
+            date: event.target.id.slice(0, 8)
         });
+    }
+    componentWillMount() {
+        Axios.get("schedules", {
+            params: {
+                date: this.props.dateInfo
+            }
+        })
+            .then(res => {
+                this.setState({
+                    todayPlans: res.data.plans
+                });
+                res.data.plans.map(plan => {
+                    this.setState({
+                        targetHours: [...this.state.targetHours, plan.startHour]
+                    });
+                });
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
     }
     render() {
         const items = [];
-        const hours = this.state.hours.map(hour => (
-            <li key={hour} className="hourList">
-                <div className="hourBox" onClick={this.togglePopup} id={hour}>
-                    {hour}
-                </div>
-            </li>
-        ));
+        const today = this.props.dateInfo;
+        const hours = this.state.hours.map(hour => {
+            const id = today + hour;
+            const target = this.state.targetHours.indexOf(hour);
+            if (target >= 0) {
+                const plan = this.state.todayPlans[target].plan;
+                console.log(plan);
+
+                return (
+                    <li key={hour} className="hourList">
+                        <div
+                            className="hourBox"
+                            onClick={this.togglePopup}
+                            id={id}
+                        >
+                            {hour}
+                            <div>{plan}</div>
+                        </div>
+                    </li>
+                );
+            }
+            return (
+                <li key={hour} className="hourList">
+                    <div className="hourBox" onClick={this.togglePopup} id={id}>
+                        {hour}
+                    </div>
+                </li>
+            );
+        });
         //console.log(hours);
         return (
             <div>
                 <ul className="dayList">{hours}</ul>
                 {this.state.showPopup ? (
                     <Popup
-                        dayInfo={this.props.dateInfo}
-                        hour={this.state.targetHour}
+                        dayInfo={this.state.date}
+                        targetHour={this.state.targetHour}
                         closePopup={this.togglePopup}
                     />
                 ) : null}
