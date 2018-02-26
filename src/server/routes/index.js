@@ -11,8 +11,6 @@ router.get("/schedules", function(req, res, next) {
     const date = req.query.date.toString();
 
     Schedule.find({ date }, function(err, plans) {
-        console.log(plans);
-
         if (err) {
             throw err;
         }
@@ -22,7 +20,7 @@ router.get("/schedules", function(req, res, next) {
 
 router.post("/schedule", (req, res, next) => {
     try {
-        console.log(req.body);
+        //console.log(req.body);
 
         let schedule = new Schedule();
         schedule.plan = req.body.plan;
@@ -33,7 +31,9 @@ router.post("/schedule", (req, res, next) => {
         schedule.save(e => {
             next(e);
         });
-        res.send(schedule);
+        console.log("here");
+
+        res.json({ schedule: "schedule" });
     } catch (e) {
         next(e);
     }

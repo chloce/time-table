@@ -54,7 +54,7 @@ class Popup extends Component {
     }
 }
 
-export default class HourBox extends Component {
+export default class dayBox extends Component {
     constructor() {
         super();
         this.state = {
