@@ -2848,8 +2848,6 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(31);
-
 var _axios = __webpack_require__(85);
 
 var Axios = _interopRequireWildcard(_axios);
@@ -3353,6 +3351,10 @@ var _weekTable = __webpack_require__(104);
 
 var _weekTable2 = _interopRequireDefault(_weekTable);
 
+var _table = __webpack_require__(112);
+
+var _table2 = _interopRequireDefault(_table);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _reactDom.render)(_react2.default.createElement(
@@ -3381,11 +3383,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
                     { to: "/week" },
                     "week"
                 )
+            ),
+            _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: "/test" },
+                    "test"
+                )
             )
         ),
         _react2.default.createElement("hr", null),
         _react2.default.createElement(_reactRouterDom.Route, { path: "/day", component: _dayTable2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: "/week", component: _weekTable2.default })
+        _react2.default.createElement(_reactRouterDom.Route, { path: "/week", component: _weekTable2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: "/test", component: _table2.default })
     )
 ), document.getElementById("root"));
 
@@ -25432,6 +25444,204 @@ var Days = function (_Component) {
 }(_react.Component);
 
 exports.default = Days;
+
+/***/ }),
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _eachHour = __webpack_require__(113);
+
+var _eachHour2 = _interopRequireDefault(_eachHour);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TestDayBox = function (_Component) {
+    _inherits(TestDayBox, _Component);
+
+    function TestDayBox() {
+        _classCallCheck(this, TestDayBox);
+
+        return _possibleConstructorReturn(this, (TestDayBox.__proto__ || Object.getPrototypeOf(TestDayBox)).apply(this, arguments));
+    }
+
+    _createClass(TestDayBox, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "day-wrapper" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "hourlist-wrapper" },
+                    _react2.default.createElement(_eachHour2.default, null)
+                ),
+                _react2.default.createElement("div", { className: "main-content" })
+            );
+        }
+    }]);
+
+    return TestDayBox;
+}(_react.Component);
+
+exports.default = TestDayBox;
+
+/***/ }),
+/* 111 */,
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _dayBox = __webpack_require__(110);
+
+var _dayBox2 = _interopRequireDefault(_dayBox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Test = function (_Component) {
+    _inherits(Test, _Component);
+
+    function Test() {
+        _classCallCheck(this, Test);
+
+        return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
+    }
+
+    _createClass(Test, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(_dayBox2.default, null)
+            );
+        }
+    }]);
+
+    return Test;
+}(_react.Component);
+
+exports.default = Test;
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TestEachHour = function (_Component) {
+    _inherits(TestEachHour, _Component);
+
+    function TestEachHour() {
+        _classCallCheck(this, TestEachHour);
+
+        var _this = _possibleConstructorReturn(this, (TestEachHour.__proto__ || Object.getPrototypeOf(TestEachHour)).call(this));
+
+        _this.state = {
+            hours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+        };
+        _this.addPlan = _this.addPlan.bind();
+        return _this;
+    }
+
+    _createClass(TestEachHour, [{
+        key: "addPlan",
+        value: function addPlan(event) {
+            event.target.style["background-color"] = "blue";
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var HourBox = this.state.hours.map(function (hour) {
+                return _react2.default.createElement(
+                    "div",
+                    {
+                        className: "individual-hour-wrapper",
+                        key: hour,
+                        id: hour,
+                        onClick: _this2.addPlan
+                    },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "individual-hour" },
+                        hour,
+                        " \u6642"
+                    )
+                );
+            });
+            return _react2.default.createElement(
+                "div",
+                null,
+                HourBox
+            );
+        }
+    }]);
+
+    return TestEachHour;
+}(_react.Component);
+
+exports.default = TestEachHour;
 
 /***/ })
 /******/ ]);

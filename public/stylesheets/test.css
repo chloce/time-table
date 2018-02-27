@@ -1,0 +1,37 @@
+.day-wrapper {
+    display: flex;
+    text-align: center;
+    position: relative;
+}
+.hourlist-wrapper {
+    position: absolute;
+    height: 2400px;
+    width: 640px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.main-content {
+    display: table;
+    height: 2400px;
+    width: 640px;
+    background-color: cornsilk;
+    text-align: left;
+}
+.main-content-planned {
+    display: table;
+    height: 2400px;
+    width: 640px;
+    background-color: cornsilk;
+    text-align: left;
+}
+.individual-hour-wrapper {
+    height: 99px;
+    border-bottom: 1px solid gray;
+}
+.individual-hour {
+    float: left;
+    width: 40px;
+    height: 99px;
+    background-color: white;
+    border-right: 1px solid rgba(0, 0, 0);
+}

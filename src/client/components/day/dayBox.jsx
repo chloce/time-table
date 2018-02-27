@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
 import * as Axios from "axios";
 
 class Popup extends Component {
